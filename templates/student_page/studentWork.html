@@ -1,60 +1,252 @@
 {% extends 'layouts\main.html' %}
 {% load static %}
 
-
 {% block title %}
-    Student | MyWork
+    Student | Work  
 {% endblock title %}
 
+    {% block css %}
+        <!-- favicon -->
+        <link rel="shortcut icon" type="image/png" href="{% static 'assets/img/bvs school bg.png' %}">
+        <!-- google font -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+        <!-- fontawesome -->
+        <link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}">
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+        <!-- owl carousel -->
+        <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}">
+        <!-- magnific popup -->
+        <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+        <!-- animate css -->
+        <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+        <!-- mean menu css -->
+        <link rel="stylesheet" href="{% static 'assets/css/meanmenu.min.css' %}">
+        <!-- main style -->
+        <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+        <!-- responsive -->
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    {% endblock css %}
 
-{% block css %}
-<link rel="stylesheet" href="{% static 'css\student_page\studentWork.css' %}">
-{% endblock css %}
-
-
-{% block content %}
-
-<div class="nav">
-    <button onclick="window.history.back()">
-        <svg viewBox="0 0 1024 1024" fill="#ffffff" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M669.6 849.6c8.8 8 22.4 7.2 30.4-1.6s7.2-22.4-1.6-30.4l-309.6-280c-8-7.2-8-17.6 0-24.8l309.6-270.4c8.8-8 9.6-21.6 2.4-30.4-8-8.8-21.6-9.6-30.4-2.4L360.8 480.8c-27.2 24-28 64-0.8 88.8l309.6 280z" fill=""></path></g></svg>
-    </button>
-    <span>My Work</span>
-</div>
-
-<div class="uploadWork">
-    <div>
-        <span>Upload Work</span>
-        <button onclick="navigateTo('upload_work')">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.5 20L18.5 14M18.5 14L21 16.5M18.5 14L16 16.5" stroke="#9100e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 19H5C3.89543 19 3 18.1046 3 17V7C3 5.89543 3.89543 5 5 5H9.58579C9.851 5 10.1054 5.10536 10.2929 5.29289L12 7H19C20.1046 7 21 7.89543 21 9V11" stroke="#9100e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-            click here to upload file
-        </button>
+    {% block content %}
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
     </div>
-</div>
+    <!--PreLoader Ends-->
+	
+	<!-- header -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="index.html">
+								<img width="60px" src="{% static 'assets/img/bvs school bg.png' %}" alt="school-logo">
+							</a>
+						</div>
+						<!-- logo -->
 
-<div class="myWork">
-    <h3>My Works</h3>
-    <div>
-        {% for detail in details %}
-        {% if student.Student_Name == detail.studentName %}
-        <p>
-            <b>StudentName :</b> {{detail.studentName}} <br> 
-            <b>SubjectName :</b> {{detail.subjectName}} <br> 
-            <b>FileName :</b> {{detail.fileName}} <br>
-            <b>class :</b> {{detail.studentClass}} <br>
-            {% if detail.comment %}
-            <b>Marks :</b> {{detail.comment}}   <small>( {{detail.staffName}} )</small>
-            {% else %}
-            <b>Marks :</b> ----
-            {% endif %}
-        </p>
-        {% endif %}
-        {% endfor %}
-    </div>
-</div>
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li><a href="index.html" style="text-decoration: none;">Home</a></li>
+								<li><a href="about.html" style="text-decoration: none;">About</a></li>
+								<li><a style="text-decoration: none;" href="blog.html">Blog</a></li>
+								<li><a href="contact.html" style="text-decoration: none;">Contact</a></li>
+								<li><a href="staff.html" style="text-decoration: none;">staff</a><li></li>
+							</ul>
+						</nav>
+						
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+	
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Indian Institute of Education, Honnali</p>
+						<h1>Student Work</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
 
-{% endblock content %}
+	<!-- latest news -->
+	<div class="latest-news" style="margin: 40px 0;">
+		<div class="container">
+			<div class="row border br shadow-lg bg-body-tertiary">
+                <table class="table table-hover">
+					<thead class="table-dark">
+					  <tr class="fs-5">
+						{% comment %} <th scope="col">S.No</th> {% endcomment %}
+						<th scope="col" class="pl-4">Student Name</th>
+						<th scope="col">Subject Name</th>
+						<th scope="col">File Name</th>
+						<th scope="col">Uploaded Time</th>
+						<th scope="col">Marks</th>
+					  </tr>
+					</thead>
+					<tbody>
+                        {% if details %}
+                            {% for detail in details %}
+                            {% if student.Student_Name == detail.studentName %}
+                            <tr>
+                                <td class="fw-bold fs-6 pl-4">{{detail.studentName}}</td>
+                                <td class="fw-bold fs-6">{{detail.subjectName}}</td>
+                                <td class="fw-bold fs-6">{{detail.fileName}}</td>
+                                <td class="fs-6">{{detail.uploaded_at}}</td>
+                                {% if detail.comment %}
+                                <td class="fw-bold fs-6" style="color:orange;">{{detail.comment}}</td>
+                                {% else %}
+                                <td>------</td>
+                                {% endif %}
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td>NO Work Done...</td>
+						</tr>
+                        {% endif %}
+					</tbody>
+				  </table>
+			</div>
 
+            <div class="row">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 text-center">
+							<div class="pagination-wrap">
+                                <button onclick="navigateTo('upload_work')"
+                                style="font-family: 'Poppins', sans-serif;
+                                       display: inline-block;
+                                       background-color: #F28123;
+                                       color: #fff;
+                                       padding: 10px 20px;
+                                       border: none;
+                                       border-radius: 25px;"
+                                >
+                                    Upload Work
+                                </button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end latest news -->
 
-{% block script %}
-<script src="{% static 'js\navigateTo.js' %}"></script>
-{% endblock script %}
+	<!-- footer -->
+	<div class="footer-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box about-widget">
+						<h2 class="widget-title">About us</h2>
+						<p><p>Indian Institute of Education, Honnali</p>
+							<p>B.V.S. Pre Primary School</p>
+							<p>Bharatiya Kannada Senior Primary School</p> 
+							<p>B.V.S. English Medium High School</p> 
+							<p>Indian Institute Kannada High School</p>
+							</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Get in Touch</h2>
+						<ul>
+							<li>Santhe Maidana, Honnali, Karnataka 577217</li>
+							<li>Email: bkhpshonnali@gmail.com | b.v.s.honnali1987@gmail.com</li>
+							<li>Ph: 08188-252331</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Pages</h2>
+						<ul>
+							<li><a href="index.html" style="text-decoration: none;">Home</a></li>
+							<li><a href="about.html" style="text-decoration: none;">About</a></li>
+							<li><a href="staff.html" style="text-decoration: none;">Staff</a></li>
+							<li><a href="blog.html" style="text-decoration: none;">Blog</a></li>
+							<li><a href="contact.html" style="text-decoration: none;">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box subscribe">
+						<h2 class="widget-title">Subscribe</h2>
+						<p>Subscribe to our mailing list to get the latest updates.</p>
+						<form action="index.html">
+							<input type="email" placeholder="Email">
+							<button type="submit"><i class="fas fa-paper-plane"><a href="http://b.v.s.honnali1987@gmail.com"></a></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end footer -->
+	
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<p>Copyrights &copy; 2019 - <a>BVS High School</a>,  All Rights Reserved.</p>
+				</div>
+				<div class="col-lg-6 text-right col-md-12">
+					<div class="social-icons">
+						<ul>
+							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    {% endblock content %}
+    
+    {% block script %}
+    <script src="{% static 'js\navigateTo.js' %}"></script>
+        <!-- jquery -->
+        <script src="{% static 'assets/js/jquery-1.11.3.min.js' %}"></script>
+        <!-- bootstrap -->
+        <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+        <!-- count down -->
+        <script src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+        <!-- isotope -->
+        <script src="{% static 'assets/js/jquery.isotope-3.0.6.min.js' %}"></script>
+        <!-- waypoints -->
+        <script src="{% static 'assets/js/waypoints.js' %}"></script>
+        <!-- owl carousel -->
+        <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+        <!-- magnific popup -->
+        <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+        <!-- mean menu -->
+        <script src="{% static 'assets/js/jquery.meanmenu.min.js' %}"></script>
+        <!-- sticker js -->
+        <script src="{% static 'assets/js/sticker.js' %}"></script>
+        <!-- main js -->
+        <script src="{% static 'assets/js/main.js' %}"></script>
+    {% endblock script %}
