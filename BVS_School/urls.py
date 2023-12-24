@@ -22,10 +22,9 @@ from School_App import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home', views.home, name='home'),
+    path('', views.homepage, name="homepage"),
     path('student_login', views.studentLogin, name='studentLogin'),
     path('teacher_login', views.teacherLogin, name='teacherLogin'),
-    path('parent_registration', views.parentRegistration, name='parentRegistration'),
     path('student_page/<str:student_name>/', views.studentPage, name='studentPage'),
     path('student_page/<str:student_name>/student_class', views.studentClass, name='studentClass'),
     path('student_page/<str:student_name>/student_timetable', views.studentTimeTable, name='studentTimeTable'),
@@ -51,7 +50,10 @@ urlpatterns = [
     path('upload_comment/<int:id>', views.uploadComment, name='uploadComment'),
     path('blog', views.blog, name='blog'),
     path('game', views.game, name='game'),
+    path('achievements', views.achievements, name='achievements'),
+    path('contact', views.contact, name='contact'),
+    path('staff', views.staff, name='staff'),
+    path('about', views.about, name='about'),
 
 ]
-
 urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

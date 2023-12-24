@@ -1,73 +1,233 @@
-{% extends 'layouts/main.html' %}
+{% extends 'layouts\main.html' %}
 {% load static %}
 
-{% block title %}
-    StudentWork | Class - 3
-{% endblock title %}
+    {% block title %}
+        Class Three
+   {% endblock title %}
+    {% block css %}
+        <!-- favicon -->
+        <link rel="shortcut icon" type="image/png" href="{% static 'assets/img/bvs school bg.png' %}">
+        <!-- google font -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+        <!-- fontawesome -->
+        <link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}">
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+        <!-- owl carousel -->
+        <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}">
+        <!-- magnific popup -->
+        <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+        <!-- animate css -->
+        <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+        <!-- mean menu css -->
+        <link rel="stylesheet" href="{% static 'assets/css/meanmenu.min.css' %}">
+        <!-- main style -->
+        <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+        <!-- responsive -->
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    {% endblock css %}
 
-{% block css %}
-<link rel="stylesheet" href="{% static 'css/class_page/class.css' %}">
-{% endblock css %}
-
-{% block content %}
-
-<div class="nav">
-    <button onclick="window.history.back()">
-        <svg viewBox="0 0 1024 1024" fill="#ffffff" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M669.6 849.6c8.8 8 22.4 7.2 30.4-1.6s7.2-22.4-1.6-30.4l-309.6-280c-8-7.2-8-17.6 0-24.8l309.6-270.4c8.8-8 9.6-21.6 2.4-30.4-8-8.8-21.6-9.6-30.4-2.4L360.8 480.8c-27.2 24-28 64-0.8 88.8l309.6 280z" fill=""></path></g></svg>
-    </button>
-    <span>Class - 3</span>
-</div>
-
-<div class="searchBox">
-    <div>
-        <h4>Search for Student Work</h4>
-        <label for="subjectName">Subject Name</label>
-        <input type="text" name="subjectName" id="subject" placeholder="Subject Name">
-        
-        <label for="studentName">Student Name</label>
-        <input type="text" name="studentName" id="name" placeholder="Student Name">
+    {% block content %}
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
     </div>
-</div>
+    <!--PreLoader Ends-->
+	
+	<!-- header --> 
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="/">
+								<img width="60px" src="{% static 'assets/img/bvs school bg.png' %}" alt="school-logo">
+							</a>
+						</div>
+						<!-- logo -->
 
-<hr>
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li><a href="/" style="text-decoration: none;">Home</a></li>
+								<li><a href="/about" style="text-decoration: none;">About</a></li>
+								<li class="current-list-item"><a style="text-decoration: none;" href="#">Class Three</a></li>
+								<li><a href="/contact" style="text-decoration: none;">Contact</a></li>
+								<li><a href="/staff" style="text-decoration: none;">staff</a><li></li>
+							</ul>
+						</nav>
+						
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+	
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Indian Institute of Education, Honnali</p>
+						<h1>Class Three Works</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
 
-<div class="studentWorkTable">
-    <h3>Student Works :</h3>
-    <div class="studentWork">
-        {% if studentWorks %}
-            {% for studentWork in studentWorks %}
-            <button onclick="addComment('{{studentWork.id}}')">
-                <div>
-                    <span class="studName">{{studentWork.studentName}}</span>
-                    <span class="subName">({{studentWork.subjectName}})</span>
-                    <span class="time">({{studentWork.uploaded_at}})</span>
+	<!-- latest news --> 
+	<div class="latest-news mt-80 mb-80">
+		<div class="container">
+            <div class="row mb-5 justify-content-center ">
+                <div class="search-container d-flex justify-content-center" style="margin-bottom: 10px;">
+                    <input type="text" id="studentNameInput" placeholder="Search by Subject name..." 
+                    style="padding: 10px 25px 10px 25px;
+                    color: #F28123;
+                    font-weight: 600;
+                    text-align: center;
+                    font-size: 20px;
+                    border: 2px solid #F28123;
+                    border-radius: 15px;"
+                    >
                 </div>
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 7L15 12L10 17" stroke="#9100e9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-            </button>
-            {% endfor %}
-        {% else %}
-        <p>No Student work in this class</p>
-        {% endif %}
-    </div>
-</div>
+                <div class="search-container d-flex justify-content-center">
+                    <input type="text" id="studentSubjectInput" placeholder="Search by Student name..." 
+                    style="padding: 10px 25px 10px 25px;
+                    color: #F28123;
+                    font-weight: 600;
+                    text-align: center;
+                    font-size: 20px;
+                    border: 2px solid #F28123;
+                    border-radius: 15px;"
+                    >
+                </div>
+                
+			</div>
+			<div class="row">
+                {% if studentWorks %}
+				{% for studentWork in studentWorks %}
+					<div class="col-lg-4 col-md-6 studentWork">
+						<div class="single-latest-news studentWorktwo">
+							<div class="news-text-box">
+								<h3><a style="text-decoration: none;" class="studentName">{{studentWork.studentName}}</a></h3>
+								<p class="blog-meta">
+									<span class="author"><i class="fas fa-user" class="subjectName"></i> {{studentWork.subjectName}}</span>
+									<span class="date"><i class="fas fa-calendar"></i> {{studentWork.uploaded_at}}</span>
+								</p>
+								<a href="http://127.0.0.1:3001/uploads/{{data.file}}" target="_blank" class="read-more-btn" style="text-decoration: none;"> Student Work<i class="fas fa-angle-right"></i></a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+                {% else %}
+                    <p class="text-danger">No Student work in this class</p>
+                {% endif %}
+			</div>
+		</div>
+	</div>
+	<!-- end latest news -->
 
-{% endblock content %}
+	<!-- footer -->
+	<div class="footer-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box about-widget">
+						<h2 class="widget-title">About us</h2>
+						<p><p>Indian Institute of Education, Honnali</p>
+							<p>B.V.S. Pre Primary School</p>
+							<p>Bharatiya Kannada Senior Primary School</p> 
+							<p>B.V.S. English Medium High School</p> 
+							<p>Indian Institute Kannada High School</p>
+							</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Get in Touch</h2>
+						<ul>
+							<li>Santhe Maidana, Honnali, Karnataka 577217</li>
+							<li>Email: bkhpshonnali@gmail.com | b.v.s.honnali1987@gmail.com</li>
+							<li>Ph: 08188-252331</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Pages</h2>
+						<ul>
+							<li><a href="/" style="text-decoration: none;">Home</a></li>
+							<li><a href="/about" style="text-decoration: none;">About</a></li>
+							<li><a href="/staff" style="text-decoration: none;">Staff</a></li>
+							<li><a href="/blog" style="text-decoration: none;">Blog</a></li>
+							<li><a href="/contact" style="text-decoration: none;">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box subscribe">
+						<h2 class="widget-title">Subscribe</h2>
+						<p>Subscribe to our mailing list to get the latest updates.</p>
+						<form action="/">
+							<input type="email" placeholder="Email">
+							<button type="submit"><i class="fas fa-paper-plane"><a href="http://b.v.s.honnali1987@gmail.com"></a></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end footer -->
+	
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<p>Copyrights &copy; 2019 - <a>BVS High School</a>,  All Rights Reserved.</p>
+				</div>
+				<div class="col-lg-6 text-right col-md-12">
+					<div class="social-icons">
+						<ul>
+							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    {% endblock content %}
+    
+    {% block script %}
 
-{% block script %}
-<script src="{% static 'js/navigateTo.js' %}"></script>
+
 <script>
-    const subjectInput = document.getElementById("subject")
-    const nameInput = document.getElementById("name")
+    const subjectInput = document.getElementById("studentSubjectInput")
+    const nameInput = document.getElementById("studentNameInput")
 
-    const studentWorkButtons = document.querySelectorAll('.studentWork button')
+    const studentWorkButtons = document.querySelectorAll('.studentWork .studentWorktwo')
 
     function filterStudentWorks() {
         const subject_name = subjectInput.value.toLowerCase()
         const student_name = nameInput.value.toLowerCase()
 
         studentWorkButtons.forEach(button => {
-            const buttonText = button.querySelector('.subName').textContent.toLowerCase()
-            const studentText = button.querySelector('.studName').textContent.toLowerCase()
+            const buttonText = button.querySelector('h3 a').textContent.toLowerCase()
+            const studentText = button.querySelector('span').textContent.toLowerCase()
 
             if ((subject_name && buttonText.includes(subject_name)) || !subject_name) {
                 if ((student_name && studentText.includes(student_name)) || !student_name) {
@@ -84,4 +244,26 @@
     subjectInput.addEventListener("input", filterStudentWorks);
     nameInput.addEventListener("input", filterStudentWorks);
 </script>
-{% endblock script %}
+    
+    
+        <!-- jquery -->
+        <script src="{% static 'assets/js/jquery-1.11.3.min.js' %}"></script>
+        <!-- bootstrap -->
+        <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+        <!-- count down -->
+        <script src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+        <!-- isotope -->
+        <script src="{% static 'assets/js/jquery.isotope-3.0.6.min.js' %}"></script>
+        <!-- waypoints -->
+        <script src="{% static 'assets/js/waypoints.js' %}"></script>
+        <!-- owl carousel -->
+        <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+        <!-- magnific popup -->
+        <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+        <!-- mean menu -->
+        <script src="{% static 'assets/js/jquery.meanmenu.min.js' %}"></script>
+        <!-- sticker js -->
+        <script src="{% static 'assets/js/sticker.js' %}"></script>
+        <!-- main js -->
+        <script src="{% static 'assets/js/main.js' %}"></script>
+    {% endblock script %}
