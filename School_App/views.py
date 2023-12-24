@@ -4,8 +4,12 @@ from .models import *
 
 # Create your views here.
 
+def homepage(request):
+    return render(request, 'home/index.html')
+
 def home(request):
     return render(request, 'login_page/home.html')
+
 
 def studentLogin(request):
     if request.method == 'POST':
@@ -21,13 +25,9 @@ def studentLogin(request):
             except student_class.DoesNotExist:
                 continue
 
-        return render(request, 'login_page/studentLogin.html', {'error_message': 'Invalid credentials'})
+        return render(request, 'login_page/studentLogin.html', {'error_message': 'Invalid User'})
 
     return render(request, 'login_page/studentLogin.html')
-
-
-def parentRegistration(request):
-    return render(request, 'login_page/parentRegister.html')
 
 def teacherLogin(request):
     if request.method == 'POST':
@@ -37,7 +37,7 @@ def teacherLogin(request):
             teacher = Teachers_Info.objects.get(Name=name, STS_Teacher_Id=id)
             return redirect('teacherPage', teacher_name=teacher.Name)
         except Teachers_Info.DoesNotExist:
-            return render(request, 'login_page/TeacherLogin.html', {'error_message': 'Invalid credentials'})
+            return render(request, 'login_page/TeacherLogin.html', {'error_message': 'Invalid User'})
 
     return render(request, 'login_page/TeacherLogin.html')
 
@@ -205,3 +205,15 @@ def blog(request):
 
 def game(request):
     return render(request, 'game/game.html')
+
+def achievements(request):
+    return render(request, 'achievements/achievements.html')
+
+def contact(request):
+    return render(request, 'contact/contact.html')
+
+def staff(request):
+    return render(request, 'staff/staff.html')
+
+def about(request):
+    return render(request, 'about/about.html')

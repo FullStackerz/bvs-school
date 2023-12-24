@@ -19,7 +19,7 @@
 </div>
 
 <div class="detailDiv">
-    <form action="http://localhost:3001/upload_comment/{{data.id}}" method="POST" class="details" autocomplete="off">
+    <form action="http://127.0.0.1:3001/upload_comment/{{data.id}}" method="POST" class="details" autocomplete="off">
         {% csrf_token %}
         <span><b>Student Name :</b> {{data.studentName}}</span>
         <span><b>Student Class :</b> {{data.studentClass}}</span>
