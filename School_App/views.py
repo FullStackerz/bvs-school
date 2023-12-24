@@ -7,10 +7,6 @@ from .models import *
 def homepage(request):
     return render(request, 'home/index.html')
 
-def home(request):
-    return render(request, 'login_page/home.html')
-
-
 def studentLogin(request):
     if request.method == 'POST':
         name = request.POST.get('username')
