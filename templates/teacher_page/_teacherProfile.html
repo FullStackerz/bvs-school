@@ -108,11 +108,11 @@
                     <div class="image d-flex flex-row justify-content-evenly align-items-center">
                         <button class="btn btn-secondary w-50 h-100 ">
                             {% if teacher.Gender == 'MALE' or teacher.Gender == 'Male' or teacher.Gender == 'male' %}
-                                <img src="{% static 'assets/img/boy.png' %}" height="150" width="150" />
+                                <img src="{% static 'assets/img/boy.png' %}" height="120px" width="120px" />
                             {% elif teacher.Gender == 'MALE' or teacher.Gender == 'Male' or teacher.Gender == 'male' %}
-                                <img src="{% static 'assets/img/girl.png' %}" height="150" width="150" />
+                                <img src="{% static 'assets/img/girl.png' %}" height="120px" width="120px" />
                             {% else %}
-                            <img src="{% static 'assets/img/unknown.png' %}" height="100" width="100" />
+                            <img src="{% static 'assets/img/unknown.png' %}" height="100px" width="100px" />
                             {% endif %}
                         </button>
                         <div>
@@ -140,11 +140,11 @@
                     <div class="image d-flex flex-column justify-content-center align-items-center">
                         <button class="btn btn-secondary">
                             {% if teacher.Gender == 'MALE' or teacher.Gender == 'Male' or teacher.Gender == 'male' %}
-                                <img src="{% static 'assets/img/boy.png' %}" height="150" width="150" />
+                                <img src="{% static 'assets/img/boy.png' %}" height="120px" width="120px" />
                             {% elif teacher.Gender == 'MALE' or teacher.Gender == 'Male' or teacher.Gender == 'male' %}
-                                <img src="{% static 'assets/img/girl.png' %}" height="150" width="150" />
+                                <img src="{% static 'assets/img/girl.png' %}" height="120px" width="120px" />
                             {% else %}
-                            <img src="{% static 'assets/img/unknown.png' %}" height="100" width="100" />
+                            <img src="{% static 'assets/img/unknown.png' %}" height="100px" width="100px" />
                             {% endif %}
                         </button>
                         <span class="name mt-3" style="font-weight: bold; font-size: 18px;">{{teacher.Name}}</span>
