@@ -124,7 +124,17 @@
 									<span class="author"><i class="fas fa-user" class="subjectName"></i> {{studentWork.subjectName}}</span>
 									<span class="date"><i class="fas fa-calendar"></i> {{studentWork.uploaded_at}}</span>
 								</p>
-								<a href="http://127.0.0.1:3001/uploads/{{data.file}}" target="_blank" class="read-more-btn" style="text-decoration: none;"> Student Work<i class="fas fa-angle-right"></i></a>
+								<a class="read-more-btn" style="text-decoration: none;"> <button 
+									style="background: transparent;
+									border: none;
+									outline: none;
+									margin-right: 5px;
+									font-weight: 600;"
+									onmouseover="this.style.color='#051922'; this.style.color='#F28123';"
+									onmouseout="this.style.color='#F28123'; this.style.color='#000';"
+									onclick="addComment('{{studentWork.id}}')">
+									Student Work <i class="fas fa-angle-right"></i>
+								</button></a>
 							</div>
 						</div>
 					</div>
@@ -244,7 +254,7 @@
     nameInput.addEventListener("input", filterStudentWorks);
 </script>
     
-    
+        <script src="{% static 'js/navigateTo.js' %}"></script>
         <!-- jquery -->
         <script src="{% static 'assets/js/jquery-1.11.3.min.js' %}"></script>
         <!-- bootstrap -->

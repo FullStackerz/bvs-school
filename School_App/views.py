@@ -161,23 +161,23 @@ def class2(request, teacher_name):
     return render(request, 'class_page/class2.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
 
 def class3(request, teacher_name):
-    studentWorks = student_Work.objects.filter(studentClass='class-3')
+    studentWorks = student_Work.objects.filter(studentClass='Class - 3')
     return render(request, 'class_page/class3.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
 
 def class4(request, teacher_name):
-    studentWorks = student_Work.objects.filter(studentClass='class-4')
+    studentWorks = student_Work.objects.filter(studentClass='Class - 4')
     return render(request, 'class_page/class4.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
 
 def class5(request, teacher_name):
-    studentWorks = student_Work.objects.filter(studentClass='class-5')
+    studentWorks = student_Work.objects.filter(studentClass='Class - 5')
     return render(request, 'class_page/class5.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
 
 def class6(request, teacher_name):
-    studentWorks = student_Work.objects.filter(studentClass='class-6')
+    studentWorks = student_Work.objects.filter(studentClass='Class - 6')
     return render(request, 'class_page/class6.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
 
 def class7(request, teacher_name):
-    studentWorks = student_Work.objects.filter(studentClass='class-7')
+    studentWorks = student_Work.objects.filter(studentClass='Class - 7')
     return render(request, 'class_page/class7.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
 
 def addComment(request,id,teacher_name):

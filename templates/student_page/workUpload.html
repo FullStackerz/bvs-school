@@ -93,8 +93,94 @@
 <!-- latest news -->
 <div class="latest-news" style="margin: 40px 0;">
     <div class="container">
-        <div class="row">
-            
+        <div class="row justify-content-center">
+            <div class="border rounded shadow-lg p-4 m-4 d-none d-lg-flex">
+                <form action="/upload" method="POST" autocomplete="off" enctype="multipart/form-data" class="d-flex flex-column p-4 col-12">
+                    {% csrf_token %}
+                    <h1 class="orange-text mb-4">Upload</h1>
+
+                    <div class="d-flex flex-row justify-content-between p-5">
+                        <div class=" d-flex" style="filter: drop-shadow(20px 20px 30px grey);">
+                            <img src="{% static 'assets/img/studentwork.png' %}" alt="">
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="mb-4">
+                                <label for="name" class="fs-4 fw-medium">Student Name : </label>
+                                <input style="height: 40px; width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="name" id="" placeholder="Student Name" required value="{{student.Student_Name}}" readonly>
+                            </div>
+                            <div class="mb-4">
+                                <label for="class" class="fs-4 fw-medium ">Student Class : </label>
+                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="class" id="" placeholder="eg : class-1" required value="{{student.Class_Studying}}" readonly>
+                            </div>
+                            <div class="mb-4">
+                                <label for="studentId" class="fs-4 fw-medium ">Student Id : </label>
+                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="studentId" id="" placeholder="Student Id"required value="{{student.Student_Id}}" readonly>
+                            </div>
+                            <div class="mb-4">
+                                <label for="subjectName" class="fs-4 fw-medium ">Subject Name : </label>
+                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="subjectName" id="" placeholder="Subject Name" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="fileName" class="fs-4 fw-medium">File Name : </label>
+                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="fileName" id="" placeholder="File Name" required>
+                            </div>
+                            <div class=" mb-4">
+                                <label for="file" class="fs-4 fw-medium">Upload File : </label>
+                                <input type="file" name="file" id="" required >
+                            </div>
+                        </div>
+                    </div>
+                              
+                    <div class="justify-content-center d-flex mt-4">
+                        <button type="submit" style="height: 50px; border :none; border-radius: 50px; padding: 0px 70px; font-size: large; font-weight: 500; background-color: rgb(242,129,35); color:white">Upload</button>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="border rounded shadow-lg p-4 m-4 d-flex d-lg-none">
+                <form action="/upload" method="POST" autocomplete="off" enctype="multipart/form-data" class="d-flex flex-column p-4 col-12">
+                    {% csrf_token %}
+                    <h1 class="orange-text mb-4">Upload</h1>
+
+                    <div class="d-flex flex-column justify-content-center">
+                        <div class=" d-flex mb-4 d-flex justify-content-center" style="filter: drop-shadow(20px 20px 20px grey);">
+                            <img style="width: 250px; height: 250px;" src="{% static 'assets/img/studentwork.png' %}" alt="">
+                        </div>
+                        <div>
+                            <div class="mb-4">
+                                <label for="name" class="fs-4 fw-medium">Student Name : </label>
+                                <input style="height: 40px; width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="name" id="" placeholder="Student Name" required value="{{student.Student_Name}}" readonly>
+                            </div>
+                            <div class="mb-4">
+                                <label for="class" class="fs-4 fw-medium ">Student Class : </label>
+                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="class" id="" placeholder="eg : class-1" required value="{{student.Class_Studying}}" readonly>
+                            </div>
+                            <div class="mb-4">
+                                <label for="studentId" class="fs-4 fw-medium ">Student Id : </label>
+                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="studentId" id="" placeholder="Student Id"required value="{{student.Student_Id}}" readonly>
+                            </div>
+                            <div class="mb-4">
+                                <label for="subjectName" class="fs-4 fw-medium ">Subject Name : </label>
+                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="subjectName" id="" placeholder="Subject Name" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="fileName" class="fs-4 fw-medium">File Name : </label>
+                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="fileName" id="" placeholder="File Name" required>
+                            </div>
+                            <div class=" mb-4">
+                                <label for="file" class="fs-4 fw-medium">Upload File : </label>
+                                <input type="file" name="file" id="" required >
+                            </div>
+                        </div> 
+                    </div>
+                              
+                    <div class="justify-content-center d-flex mt-4">
+                        <button type="submit" style="height: 50px; border :none; border-radius: 50px; padding: 0px 70px; font-size: large; font-weight: 500; background-color: rgb(242,129,35); color:white">Upload</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
 </div>
