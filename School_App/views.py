@@ -139,7 +139,7 @@ def teacherPage(request, teacher_name):
     return render(request, 'teacher_page/_teacherHome.html', {'teacher': data})
  
 def teacherClass(request, teacher_name):
-    return render(request, 'teacher_page/_teacherClass.html', {'teacher_name': teacher_name})
+    return render(request, 'teacher_page/_teacherClass.html')
 
 def teacherTimeTable(request, teacher_name):
     return render(request, 'teacher_page/_teacherTimeTable.html', {'teacher_name': teacher_name})
@@ -150,35 +150,43 @@ def teacherProfile(request, teacher_name):
 
 
 def teacherWork(request, teacher_name):
-    return render(request, 'teacher_page/_studentClasses.html', {'teacher_name': teacher_name})
+    data = Teachers_Info.objects.get(Name=teacher_name)
+    return render(request, 'teacher_page/_studentClasses.html', {'teacher': data})
 
 def class1(request, teacher_name):
+    data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 1')
-    return render(request, 'class_page/class1.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
+    return render(request, 'class_page/class1.html', {'studentWorks':studentWorks,'teacher': data})
 
 def class2(request, teacher_name):
+    data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 2')
-    return render(request, 'class_page/class2.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
+    return render(request, 'class_page/class2.html', {'studentWorks':studentWorks,'teacher': data})
 
 def class3(request, teacher_name):
+    data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 3')
-    return render(request, 'class_page/class3.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
+    return render(request, 'class_page/class3.html', {'studentWorks':studentWorks,'teacher': data})
 
 def class4(request, teacher_name):
+    data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 4')
-    return render(request, 'class_page/class4.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
+    return render(request, 'class_page/class4.html', {'studentWorks':studentWorks,'teacher': data})
 
 def class5(request, teacher_name):
+    data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 5')
-    return render(request, 'class_page/class5.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
+    return render(request, 'class_page/class5.html', {'studentWorks':studentWorks,'teacher': data})
 
 def class6(request, teacher_name):
+    data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 6')
-    return render(request, 'class_page/class6.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
+    return render(request, 'class_page/class6.html', {'studentWorks':studentWorks,'teacher': data})
 
 def class7(request, teacher_name):
+    data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 7')
-    return render(request, 'class_page/class7.html', {'studentWorks':studentWorks,'teacher_name': teacher_name})
+    return render(request, 'class_page/class7.html', {'studentWorks':studentWorks,'teacher': data})
 
 def addComment(request,id,teacher_name):
     myData = student_Work.objects.get(id=id)
