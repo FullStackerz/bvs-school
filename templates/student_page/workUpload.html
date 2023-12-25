@@ -97,42 +97,161 @@
             <div class="border rounded shadow-lg p-4 m-4 d-none d-lg-flex">
                 <form action="/upload" method="POST" autocomplete="off" enctype="multipart/form-data" class="d-flex flex-column p-4 col-12">
                     {% csrf_token %}
-                    <h1 class="orange-text mb-4">Upload</h1>
-
+                    <h1 class="orange-text mb-5 text-center" style="
+                    font-weight: 600;
+                    ">Upload Form</h1>
                     <div class="d-flex flex-row justify-content-between p-5">
                         <div class=" d-flex" style="filter: drop-shadow(20px 20px 30px grey);">
                             <img src="{% static 'assets/img/studentwork.png' %}" alt="">
                         </div>
                         <div class="d-flex flex-column">
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <label for="name" class="fs-4 fw-medium">Student Name : </label>
-                                <input style="height: 40px; width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="name" id="" placeholder="Student Name" required value="{{student.Student_Name}}" readonly>
+                                <input style="height: 60px;
+                                width: 100%;
+                                border: 2px dotted #000;
+                                padding-left: 10px;
+                                font-weight: 500;
+                                border-radius: 15px;
+                                font-size: 18px;
+                                outline: none;"
+                                type="text" name="name" id="" placeholder="Student Name" required value="{{student.Student_Name}}" readonly>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <label for="class" class="fs-4 fw-medium ">Student Class : </label>
-                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="class" id="" placeholder="eg : class-1" required value="{{student.Class_Studying}}" readonly>
+                                <input style="height: 60px;
+                                width: 100%;
+                                border: 2px dotted #000;
+                                padding-left: 10px;
+                                font-weight: 500;
+                                border-radius: 15px;
+                                font-size: 18px;
+                                outline: none;"
+                                type="text" name="class" id="" placeholder="eg : class-1" required value="{{student.Class_Studying}}" readonly>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <label for="studentId" class="fs-4 fw-medium ">Student Id : </label>
-                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="studentId" id="" placeholder="Student Id"required value="{{student.Student_Id}}" readonly>
+                                <input style="height: 60px;
+                                width: 100%;
+                                border: 2px dotted #000;
+                                padding-left: 10px;
+                                font-weight: 500;
+                                border-radius: 15px;
+                                font-size: 18px;
+                                outline: none;"
+                                type="text" name="studentId" id="" placeholder="Student Id"required value="{{student.Student_Id}}" readonly>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <label for="subjectName" class="fs-4 fw-medium ">Subject Name : </label>
-                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="subjectName" id="" placeholder="Subject Name" required>
+                                <input style="height: 60px;
+                                width: 100%;
+                                border: 2px dotted #000;
+                                padding-left: 10px;
+                                font-weight: 500;
+                                border-radius: 15px;
+                                font-size: 18px;
+                                outline: none;"
+                                type="text" name="subjectName" id="" placeholder="Subject Name" required>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <label for="fileName" class="fs-4 fw-medium">File Name : </label>
-                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="fileName" id="" placeholder="File Name" required>
-                            </div>
-                            <div class=" mb-4">
-                                <label for="file" class="fs-4 fw-medium">Upload File : </label>
-                                <input type="file" name="file" id="" required >
+                                <input style="height: 60px;
+                                width: 100%;
+                                border: 2px dotted #000;
+                                padding-left: 10px;
+                                font-weight: 500;
+                                border-radius: 15px;
+                                font-size: 18px;
+                                outline: none;"
+                                type="text" name="fileName" id="" placeholder="File Name" required>
                             </div>
                         </div>
+                        
                     </div>
+                    <div class="col-sm-12">
+                        <div id="app" style="text-align: center; color: white;" class="d-flex justify-content-center">
+                          <div class="file-input-box col-11" style="display: flex; justify-content: center; flex-direction: column; border-radius: 10px; box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2); width: 600px; height: auto; background-color: #ffffff; padding: 20px;">
+                      
+                            <div class="wrapper-file-input">
+                              <div class="input-box" onclick="openFileInput()" style="padding: 20px; display: grid; place-items: center; border: 2px dashed #cacaca; border-radius: 5px; margin-bottom: 5px; cursor: pointer;">
+                                <h4 style="margin: 0; color: #000">
+                                  <i class="fa-solid fa-upload"></i>
+                                  Choose File to upload
+                                </h4>
+                                <input
+                                  id="fileInput"
+                                  type="file"
+                                  name="file"
+                                  hidden
+                                  onchange="handleFileChange(event)"
+                                  multiple
+                                />
+                              </div>
+                              <small style="font-size: 12px; color: #000;">Files Supported: PDF, TEXT, DOC, DOCX, JPG, PNG, SVG</small>
+                            </div>
+                      
+                            <div class="wrapper-file-section" style="max-height: 220px;">
+                              <div class="selected-files">
+                                <h5 style="margin-bottom: 10px; color: #000">Selected Files</h5>
+                                <ul class="file-list" style="overflow-y: auto; list-style-type: none; padding: 0 10px 10px 0; margin: 0; transition: 0.3s all ease-in-out; color: #000">
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <script>
+                            function openFileInput() {
+                              document.getElementById('fileInput').click();
+                            }
+                        
+                            function handleFileChange(event) {
+                              const fileList = event.target.files;
+                              const fileNames = document.querySelector('.file-list');
                               
+                              for (let i = 0; i < fileList.length; i++) {
+                                const listItem = document.createElement('li');
+                                listItem.classList.add('item');
+                                listItem.innerHTML = `
+                                  <span class="name">
+                                    ${fileList[i].name} (${formatFileSize(fileList[i].size)})
+                                  </span>
+                                  <div class="remove" onclick="removeFile(this)">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                  </div>
+                                `;
+                                fileNames.appendChild(listItem);
+                              }
+                            }
+                        
+                            function formatFileSize(size) {
+                              const units = ["B", "KB", "MB", "GB"];
+                              let index = 0;
+                        
+                              while (size >= 1024 && index < units.length - 1) {
+                                size /= 1024;
+                                index++;
+                              }
+                        
+                              return `${size.toFixed(2)} ${units[index]}`;
+                            }
+                        
+                            function removeFile(element) {
+                              element.parentNode.parentNode.removeChild(element.parentNode);
+                            }
+                          </script>
+                    </div>  
                     <div class="justify-content-center d-flex mt-4">
-                        <button type="submit" style="height: 50px; border :none; border-radius: 50px; padding: 0px 70px; font-size: large; font-weight: 500; background-color: rgb(242,129,35); color:white">Upload</button>
+                        <button type="submit" style="height: 50px;
+                        border :none;
+                        border-radius: 50px;
+                        padding: 0px 70px;
+                        font-size: large;
+                        font-weight: 500;
+                        background-color: rgb(242,129,35);
+                        color:white"
+                        onmouseover="this.style.backgroundColor='#051922'; this.style.color='#F28123';"
+                        onmouseout="this.style.backgroundColor='#F28123'; this.style.color='#fff';"
+                        >Upload</button>
                     </div>
                 </form>
             </div>
@@ -141,42 +260,161 @@
             <div class="border rounded shadow-lg p-4 m-4 d-flex d-lg-none">
                 <form action="/upload" method="POST" autocomplete="off" enctype="multipart/form-data" class="d-flex flex-column p-4 col-12">
                     {% csrf_token %}
-                    <h1 class="orange-text mb-4">Upload</h1>
+                    <h1 class="orange-text mb-5 text-center" style="
+                    font-weight: 600;
+                    ">Upload Form</h1>
 
                     <div class="d-flex flex-column justify-content-center">
                         <div class=" d-flex mb-4 d-flex justify-content-center" style="filter: drop-shadow(20px 20px 20px grey);">
                             <img style="width: 250px; height: 250px;" src="{% static 'assets/img/studentwork.png' %}" alt="">
                         </div>
                         <div>
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <label for="name" class="fs-4 fw-medium">Student Name : </label>
-                                <input style="height: 40px; width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="name" id="" placeholder="Student Name" required value="{{student.Student_Name}}" readonly>
+                                <input style="height: 60px;
+                                width: 100%;
+                                border: 2px dotted #000;
+                                padding-left: 10px;
+                                font-weight: 500;
+                                border-radius: 15px;
+                                font-size: 18px;
+                                outline: none;"
+                                type="text" name="name" id="" placeholder="Student Name" required value="{{student.Student_Name}}" readonly>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <label for="class" class="fs-4 fw-medium ">Student Class : </label>
-                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="class" id="" placeholder="eg : class-1" required value="{{student.Class_Studying}}" readonly>
+                                <input style="height: 60px;
+                                width: 100%;
+                                border: 2px dotted #000;
+                                padding-left: 10px;
+                                font-weight: 500;
+                                border-radius: 15px;
+                                font-size: 18px;
+                                outline: none;"
+                                type="text" name="class" id="" placeholder="eg : class-1" required value="{{student.Class_Studying}}" readonly>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <label for="studentId" class="fs-4 fw-medium ">Student Id : </label>
-                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="studentId" id="" placeholder="Student Id"required value="{{student.Student_Id}}" readonly>
+                                <input style="height: 60px;
+                                width: 100%;
+                                border: 2px dotted #000;
+                                padding-left: 10px;
+                                font-weight: 500;
+                                border-radius: 15px;
+                                font-size: 18px;
+                                outline: none;"
+                                type="text" name="studentId" id="" placeholder="Student Id"required value="{{student.Student_Id}}" readonly>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <label for="subjectName" class="fs-4 fw-medium ">Subject Name : </label>
-                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="subjectName" id="" placeholder="Subject Name" required>
+                                <input style="height: 60px;
+                                width: 100%;
+                                border: 2px dotted #000;
+                                padding-left: 10px;
+                                font-weight: 500;
+                                border-radius: 15px;
+                                font-size: 18px;
+                                outline: none;"
+                                type="text" name="subjectName" id="" placeholder="Subject Name" required>
                             </div>
-                            <div class="mb-4">
+                            <div class="mb-2">
                                 <label for="fileName" class="fs-4 fw-medium">File Name : </label>
-                                <input style="height: 40px;  width: 100%; padding-left: 10px; font-weight: 500;" type="text" name="fileName" id="" placeholder="File Name" required>
+                                <input style="height: 60px;
+                                width: 100%;
+                                border: 2px dotted #000;
+                                padding-left: 10px;
+                                font-weight: 500;
+                                border-radius: 15px;
+                                font-size: 18px;
+                                outline: none;"
+                                type="text" name="fileName" id="" placeholder="File Name" required>
                             </div>
-                            <div class=" mb-4">
-                                <label for="file" class="fs-4 fw-medium">Upload File : </label>
-                                <input type="file" name="file" id="" required >
-                            </div>
-                        </div> 
+                                <div class="col-sm-12 mt-3">
+                                    <div id="app" style="text-align: center; color: white;" class="d-flex justify-content-center">
+                                      <div class="file-input-box col-11" style="display: flex; justify-content: center; flex-direction: column; border-radius: 10px; box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2); width: 600px; height: auto; background-color: #ffffff; padding: 20px;">
+                                  
+                                        <div class="wrapper-file-input">
+                                          <div class="input-box" onclick="openFileInput()" style="padding: 20px; display: grid; place-items: center; border: 2px dashed #cacaca; border-radius: 5px; margin-bottom: 5px; cursor: pointer;">
+                                            <h4 style="margin: 0; color: #000">
+                                              <i class="fa-solid fa-upload"></i>
+                                              Choose File
+                                            </h4>
+                                            <input
+                                              id="fileInput"
+                                              type="file"
+                                              name="file"
+                                              hidden
+                                              onchange="handleFileChange(event)"
+                                              multiple
+                                            />
+                                          </div>
+                                        </div>
+                                  
+                                        <div class="wrapper-file-section" style="max-height: 220px;">
+                                          <div class="selected-files">
+                                            <h5 style="margin-bottom: 10px; color: #000">Selected Files</h5>
+                                            <ul class="file-list" style="overflow-y: auto; list-style-type: none; padding: 0 10px 10px 0; margin: 0; transition: 0.3s all ease-in-out; color: #000">
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <script>
+                                        function openFileInput() {
+                                          document.getElementById('fileInput').click();
+                                        }
+                                    
+                                        function handleFileChange(event) {
+                                          const fileList = event.target.files;
+                                          const fileNames = document.querySelector('.file-list');
+                                          
+                                          for (let i = 0; i < fileList.length; i++) {
+                                            const listItem = document.createElement('li');
+                                            listItem.classList.add('item');
+                                            listItem.innerHTML = `
+                                              <span class="name">
+                                                ${fileList[i].name} (${formatFileSize(fileList[i].size)})
+                                              </span>
+                                              <div class="remove" onclick="removeFile(this)">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                              </div>
+                                            `;
+                                            fileNames.appendChild(listItem);
+                                          }
+                                        }
+                                    
+                                        function formatFileSize(size) {
+                                          const units = ["B", "KB", "MB", "GB"];
+                                          let index = 0;
+                                    
+                                          while (size >= 1024 && index < units.length - 1) {
+                                            size /= 1024;
+                                            index++;
+                                          }
+                                    
+                                          return `${size.toFixed(2)} ${units[index]}`;
+                                        }
+                                    
+                                        function removeFile(element) {
+                                          element.parentNode.parentNode.removeChild(element.parentNode);
+                                        }
+                                      </script>
+                                </div>
+                            </div> 
                     </div>
                               
                     <div class="justify-content-center d-flex mt-4">
-                        <button type="submit" style="height: 50px; border :none; border-radius: 50px; padding: 0px 70px; font-size: large; font-weight: 500; background-color: rgb(242,129,35); color:white">Upload</button>
+                        <button type="submit" style="height: 50px;
+                        border :none;
+                        border-radius: 50px;
+                        padding: 0px 70px;
+                        font-size: large;
+                        font-weight: 500;
+                        background-color: rgb(242,129,35);
+                        color:white"
+                        onmouseover="this.style.backgroundColor='#051922'; this.style.color='#F28123';"
+                        onmouseout="this.style.backgroundColor='#F28123'; this.style.color='#fff';"
+                        >Upload</button>
                     </div>
                 </form>
             </div>
