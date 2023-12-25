@@ -45,7 +45,7 @@
 					<div class="main-menu-wrap">
 						<!-- logo -->
 						<div class="site-logo">
-							<a href="/">
+							<a href="index.html">
 								<img width="60px" src="{% static 'assets/img/bvs school bg.png' %}" alt="school-logo">
 							</a>
 						</div>
@@ -54,10 +54,11 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li><a href="http://127.0.0.1:3001/student_page/{{student.Student_Name}}/" style="text-decoration: none;">Home</a></li>
-								<li class="current-list-item"><a href="http://127.0.0.1:3001/student_page/{{student.Student_Name}}/student_work" style="text-decoration: none;">My Work</a></li>
-								<li><a href="http://127.0.0.1:3001/student_page/{{student.Student_Name}}/student_profile" style="text-decoration: none;">Profile</a></li>
-								<li></li>
+								<li><a href="index.html" style="text-decoration: none;">Home</a></li>
+								<li><a href="about.html" style="text-decoration: none;">About</a></li>
+								<li><a style="text-decoration: none;" href="blog.html">Blog</a></li>
+								<li><a href="contact.html" style="text-decoration: none;">Contact</a></li>
+								<li><a href="staff.html" style="text-decoration: none;">staff</a><li></li>
 							</ul>
 						</nav>
 						
@@ -86,56 +87,67 @@
 	<!-- end breadcrumb section -->
 
 	<!-- latest news -->
-	<div class="latest-news mt-5 mb-5">
-		<div class="table-responsive-lg  container">
-			<table class="table">
-				<thead class="table-dark">
-					<tr class="fs-5">
-					  <th scope="col">Student Name</th>
-					  <th scope="col">Subject Name</th>
-					  <th scope="col">File Name</th>
-					  <th scope="col">Uploaded Time</th>
-					  <th scope="col">Marks</th>
-					</tr>
-				  </thead>
-				  <tbody>
-					{% if details %}
-						{% for detail in details %}
-						{% if student.Student_Name == detail.studentName %}
-							<tr>
-								<td class="fw-bold fs-6 pl-4 border">{{detail.studentName}}</td>
-								<td class="fw-bold fs-6 border">{{detail.subjectName}}</td>
-								<td class="fw-bold fs-6 border">{{detail.fileName}}</td>
-								<td class="fs-6">{{detail.uploaded_at}}</td>
-								{% if detail.comment %}
-								<td class="fw-bold fs-6 border" style="color:orange;">{{detail.comment}}</td>
-								{% else %}
-								<td class="fs-6 border">------</td>
-								{% endif %}
-							</tr>
-						{% endif %}
-						{% endfor %}
-					{% else %}
-					<tr>
-						<td>NO Work Done...</td>
-					</tr>
-					{% endif %}
-				</tbody>
-			</table>
-		</div>
+	<div class="latest-news" style="margin: 40px 0;">
+		<div class="container">
+			<div class="row border br shadow-lg bg-body-tertiary">
+                <table class="table table-hover">
+					<thead class="table-dark">
+					  <tr class="fs-5">
+						{% comment %} <th scope="col">S.No</th> {% endcomment %}
+						<th scope="col" class="pl-4">Student Name</th>
+						<th scope="col">Subject Name</th>
+						<th scope="col">File Name</th>
+						<th scope="col">Uploaded Time</th>
+						<th scope="col">Marks</th>
+					  </tr>
+					</thead>
+					<tbody>
+                        {% if details %}
+                            {% for detail in details %}
+                            {% if student.Student_Name == detail.studentName %}
+                            <tr>
+                                <td class="fw-bold fs-6 pl-4">{{detail.studentName}}</td>
+                                <td class="fw-bold fs-6">{{detail.subjectName}}</td>
+                                <td class="fw-bold fs-6">{{detail.fileName}}</td>
+                                <td class="fs-6">{{detail.uploaded_at}}</td>
+                                {% if detail.comment %}
+                                <td class="fw-bold fs-6" style="color:orange;">{{detail.comment}}</td>
+                                {% else %}
+                                <td>------</td>
+                                {% endif %}
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td>NO Work Done...</td>
+						</tr>
+                        {% endif %}
+					</tbody>
+				  </table>
+			</div>
 
-		<div class="container mt-5 d-flex justify-content-center">
-			<button onclick="navigateTo('upload_work')"
-					style="font-family: 'Poppins', sans-serif;
-						   display: inline-block;
-						   background-color: #F28123;
-						   color: #fff;
-						   padding: 10px 20px;
-						   border: none;
-						   border-radius: 25px;"
-				>
-				Upload Work
-			</button>
+            <div class="row">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 text-center">
+							<div class="pagination-wrap">
+                                <button onclick="navigateTo('upload_work')"
+                                style="font-family: 'Poppins', sans-serif;
+                                       display: inline-block;
+                                       background-color: #F28123;
+                                       color: #fff;
+                                       padding: 10px 20px;
+                                       border: none;
+                                       border-radius: 25px;"
+                                >
+                                    Upload Work
+                                </button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- end latest news -->
@@ -169,11 +181,11 @@
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="/" style="text-decoration: none;">Home</a></li>
-							<li><a href="/about" style="text-decoration: none;">About</a></li>
-							<li><a href="/staff" style="text-decoration: none;">Staff</a></li>
-							<li><a href="/blog" style="text-decoration: none;">Blog</a></li>
-							<li><a href="/contact" style="text-decoration: none;">Contact</a></li>
+							<li><a href="index.html" style="text-decoration: none;">Home</a></li>
+							<li><a href="about.html" style="text-decoration: none;">About</a></li>
+							<li><a href="staff.html" style="text-decoration: none;">Staff</a></li>
+							<li><a href="blog.html" style="text-decoration: none;">Blog</a></li>
+							<li><a href="contact.html" style="text-decoration: none;">Contact</a></li>
 						</ul>
 					</div>
 				</div>
@@ -181,7 +193,7 @@
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index">
+						<form action="index.html">
 							<input type="email" placeholder="Email">
 							<button type="submit"><i class="fas fa-paper-plane"><a href="http://b.v.s.honnali1987@gmail.com"></a></i></button>
 						</form>
