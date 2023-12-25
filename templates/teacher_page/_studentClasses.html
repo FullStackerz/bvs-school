@@ -2,7 +2,7 @@
 {% load static %}
 
     {% block title %}
-        Student's Class
+        Student's | Class
    {% endblock title %}
     {% block css %}
         <!-- favicon -->
@@ -53,14 +53,13 @@
 
 						<!-- menu start -->
 						<nav class="main-menu">
-							<ul>
-								<li><a href="/" style="text-decoration: none;">Home</a></li>
-								<li ><a href="/about" style="text-decoration: none;">About</a></li>
-								<li class="current-list-item"><a href="/blog" style="text-decoration: none;">Class List</a></li>
-								<li><a href="/contact" style="text-decoration: none;">Contact</a></li>
-								<li><a href="/staff" style="text-decoration: none;">staff</a><li></li>
-							</ul>
-						</nav> 
+                            <ul>
+                                <li><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/" style="text-decoration: none;">Home</a></li>
+                                <li class="current-list-item"><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/teacher_work" style="text-decoration: none;">Class List</a></li>
+                                <li><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/teacher_profile" style="text-decoration: none;">Profile</a></li>
+                                <li></li>
+                            </ul>
+                        </nav>
 						
 						<div class="mobile-menu"></div>
 						<!-- menu end -->

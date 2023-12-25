@@ -62,11 +62,10 @@
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li><a href="/" style="text-decoration: none;">Home</a></li>
-                            <li><a href="/about" style="text-decoration: none;">About</a></li>
-                            <li><a style="text-decoration: none;" href="/blog">Blog</a></li>
-                            <li><a href="/contact" style="text-decoration: none;">Contact</a></li>
-                            <li><a href="/staff" style="text-decoration: none;">staff</a><li></li>
+                            <li><a href="http://127.0.0.1:3001/student_page/{{student.Student_Name}}/" style="text-decoration: none;">Home</a></li>
+                            <li class="current-list-item"><a href="http://127.0.0.1:3001/student_page/{{student.Student_Name}}/student_profile" style="text-decoration: none;">Profile</a></li>
+                            <li><a href="http://127.0.0.1:3001/student_page/{{student.Student_Name}}/student_work" style="text-decoration: none;">My Work</a></li>
+                            <li></li>
                         </ul>
                     </nav>
                     
@@ -143,11 +142,11 @@
                     <div class="image d-flex flex-column justify-content-center align-items-center">
                         <button class="btn btn-secondary">
                             {% if student.Sex == 'BOY' or student.Sex == 'Boy' or student.Sex == 'boy' %}
-                                <img src="{% static 'assets/img/boy.png' %}" height="150px" width="150px" />
+                                <img src="{% static 'assets/img/boy.png' %}" height="100px" width="100px" />
                             {% elif student.Sex == 'GIRL' or student.Sex == 'Girl' or student.Sex == 'girl' %}
-                                <img src="{% static 'assets/img/girl.png' %}" height="150px" width="150px" />
+                                <img src="{% static 'assets/img/girl.png' %}" height="100px" width="100px" />
                             {% else %}
-                                <img src="{% static 'assets/img/unknown.png' %}" height="100px" width="100px" />
+                                <img src="{% static 'assets/img/unknown.png' %}" height="80px" width="80px" />
                             {% endif %}
                         </button>
                         <span class="name mt-3" style="font-weight: bold; font-size: 18px;">{{student.Student_Name}}</span>
@@ -256,9 +255,8 @@
 {% block script %}
 <script>
     function logout() {
-        window.location.href = "/home";
+        window.location.href = "/";
     }
-</script>
 </script>
 <!-- jquery -->
 <script src="{% static 'assets/js/jquery-1.11.3.min.js' %}"></script>
