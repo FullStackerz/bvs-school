@@ -23,20 +23,16 @@ from School_App import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name="homepage"),
+
     path('student_login', views.studentLogin, name='studentLogin'),
     path('teacher_login', views.teacherLogin, name='teacherLogin'),
     path('student_page/<str:student_name>/', views.studentPage, name='studentPage'),
-    path('student_page/<str:student_name>/student_class', views.studentClass, name='studentClass'),
-    path('student_page/<str:student_name>/student_timetable', views.studentTimeTable, name='studentTimeTable'),
     path('student_page/<str:student_name>/student_work', views.studentWork, name='/studentWork'),
     path('student_page/<str:student_name>/upload_work', views.uploadWork, name='/uploadWork'),
     path('upload', views.upload, name='upload'),
     path('student_page/<str:student_name>/student_profile', views.studentProfile, name='studentProfile'),
 
-    path('teacher_page/<str:teacher_name>/', views.teacherPage, name='teacherPage'), 
-
-    path('teacher_page/<str:teacher_name>/teacher_class', views.teacherClass, name='teacherClass'),
-    path('teacher_page/<str:teacher_name>/teacher_timetable', views.teacherTimeTable, name='teacherTimeTable'),
+    path('teacher_page/<str:teacher_name>/', views.teacherPage, name='teacherPage'),
     path('teacher_page/<str:teacher_name>/teacher_profile', views.teacherProfile, name='teacherProfile'),
     path('teacher_page/<str:teacher_name>/teacher_work', views.teacherWork, name='/teacherWork'),
     path('teacher_page/<str:teacher_name>/class_1', views.class1, name='class-1'),
@@ -48,6 +44,7 @@ urlpatterns = [
     path('teacher_page/<str:teacher_name>/class_7', views.class7, name='class-7'),
     path('teacher_page/<str:teacher_name>/add_comment/<int:id>', views.addComment, name='addComment'),
     path('upload_comment/<int:id>', views.uploadComment, name='uploadComment'),
+
     path('blog', views.blog, name='blog'),
     path('game', views.game, name='game'),
     path('achievements', views.achievements, name='achievements'),

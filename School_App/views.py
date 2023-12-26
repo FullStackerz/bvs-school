@@ -1,11 +1,11 @@
 from django.shortcuts import redirect, render
-from django.urls import is_valid_path
 from .models import *
 
 # Create your views here.
 
 def homepage(request):
     return render(request, 'home/index.html')
+
 
 def studentLogin(request):
     if request.method == 'POST':
@@ -25,6 +25,7 @@ def studentLogin(request):
 
     return render(request, 'login_page/studentLogin.html')
 
+
 def teacherLogin(request):
     if request.method == 'POST':
         name = request.POST.get('username')
@@ -37,6 +38,7 @@ def teacherLogin(request):
 
     return render(request, 'login_page/TeacherLogin.html')
 
+
 def get_student_data(class_name, student_name):
     try:
         student_class = globals()[class_name]
@@ -44,6 +46,7 @@ def get_student_data(class_name, student_name):
         return student
     except student_class.DoesNotExist:
         return None
+
 
 def studentPage(request, student_name):
     class_names = ['Class_one', 'Class_two', 'Class_three', 'Class_four', 'Class_five', 'Class_six', 'Class_seven']
@@ -55,25 +58,6 @@ def studentPage(request, student_name):
 
     return render(request, 'error_page.html', {'error_message': 'Student not found'})
 
-def studentClass(request, student_name):
-    class_names = ['Class_one', 'Class_two', 'Class_three', 'Class_four', 'Class_five', 'Class_six', 'Class_seven']
-
-    for class_name in class_names:
-        student_data = get_student_data(class_name, student_name)
-        if student_data:
-            return render(request, 'student_page/studentClass.html', {'student': student_data})
-
-    return render(request, 'error_page.html', {'error_message': 'Student not found'})
-
-def studentTimeTable(request, student_name):
-    class_names = ['Class_one', 'Class_two', 'Class_three', 'Class_four', 'Class_five', 'Class_six', 'Class_seven']
-
-    for class_name in class_names:
-        student_data = get_student_data(class_name, student_name)
-        if student_data:
-            return render(request, 'student_page/studentTimeTable.html', {'student': student_data})
-
-    return render(request, 'error_page.html', {'error_message': 'Student not found'})
 
 def studentWork(request, student_name):
     class_names = ['Class_one', 'Class_two', 'Class_three', 'Class_four', 'Class_five', 'Class_six', 'Class_seven']
@@ -86,6 +70,7 @@ def studentWork(request, student_name):
 
     return render(request, 'error_page.html', {'error_message': 'Student not found'})
 
+
 def uploadWork(request, student_name):
     class_names = ['Class_one', 'Class_two', 'Class_three', 'Class_four', 'Class_five', 'Class_six', 'Class_seven']
 
@@ -95,7 +80,6 @@ def uploadWork(request, student_name):
             return render(request, 'student_page/workUpload.html', {'student': student_data})
 
     return render(request, 'error_page.html', {'error_message': 'Student not found'})
-
 
 
 def upload(request):
@@ -137,12 +121,7 @@ def studentProfile(request, student_name):
 def teacherPage(request, teacher_name):
     data = Teachers_Info.objects.get(Name=teacher_name)
     return render(request, 'teacher_page/_teacherHome.html', {'teacher': data})
- 
-def teacherClass(request, teacher_name):
-    return render(request, 'teacher_page/_teacherClass.html')
 
-def teacherTimeTable(request, teacher_name):
-    return render(request, 'teacher_page/_teacherTimeTable.html', {'teacher_name': teacher_name})
 
 def teacherProfile(request, teacher_name):
     data = Teachers_Info.objects.get(Name=teacher_name)
@@ -153,45 +132,54 @@ def teacherWork(request, teacher_name):
     data = Teachers_Info.objects.get(Name=teacher_name)
     return render(request, 'teacher_page/_studentClasses.html', {'teacher': data})
 
+
 def class1(request, teacher_name):
     data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 1')
     return render(request, 'class_page/class1.html', {'studentWorks':studentWorks,'teacher': data})
+
 
 def class2(request, teacher_name):
     data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 2')
     return render(request, 'class_page/class2.html', {'studentWorks':studentWorks,'teacher': data})
 
+
 def class3(request, teacher_name):
     data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 3')
     return render(request, 'class_page/class3.html', {'studentWorks':studentWorks,'teacher': data})
+
 
 def class4(request, teacher_name):
     data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 4')
     return render(request, 'class_page/class4.html', {'studentWorks':studentWorks,'teacher': data})
 
+
 def class5(request, teacher_name):
     data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 5')
     return render(request, 'class_page/class5.html', {'studentWorks':studentWorks,'teacher': data})
+
 
 def class6(request, teacher_name):
     data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 6')
     return render(request, 'class_page/class6.html', {'studentWorks':studentWorks,'teacher': data})
 
+
 def class7(request, teacher_name):
     data = Teachers_Info.objects.get(Name=teacher_name)
     studentWorks = student_Work.objects.filter(studentClass='Class - 7')
     return render(request, 'class_page/class7.html', {'studentWorks':studentWorks,'teacher': data})
 
+
 def addComment(request,id,teacher_name):
     myData = student_Work.objects.get(id=id)
     data = Teachers_Info.objects.get(Name=teacher_name)
     return render(request, 'teacher_page/_addComment.html', {'data':myData,'teacher_name': teacher_name, 'teacher': data})
+
 
 def uploadComment(request,id):
     myData = student_Work.objects.get(id=id)
@@ -202,22 +190,28 @@ def uploadComment(request,id):
         myData.staffName = staffName
         myData.save() 
         return render(request, 'student_page/success.html')
-    
+
+   
 def blog(request):
     data = student_Work.objects.all()
     return render(request, 'blog/blog.html', {'datas':data})
 
+
 def game(request):
     return render(request, 'game/game.html')
+
 
 def achievements(request):
     return render(request, 'achievements/achievements.html')
 
+
 def contact(request):
     return render(request, 'contact/contact.html')
 
+
 def staff(request):
     return render(request, 'staff/staff.html')
+
 
 def about(request):
     return render(request, 'about/about.html')
