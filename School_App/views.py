@@ -6,6 +6,8 @@ from .models import *
 def homepage(request):
     return render(request, 'home/index.html')
 
+def handler404(request):
+    return render(request, '404/404.html', status=404)
 
 def studentLogin(request):
     if request.method == 'POST':
